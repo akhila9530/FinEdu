@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FinWise AI | Personalized Financial Education</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f9fc;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      background: #0f172a;
+      color: white;
+      padding: 16px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav ul li a:hover {
+      color: #38bdf8;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 8%;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+    }
+
+    .hero-text {
+      width: 52%;
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #38bdf8;
+    }
+
+    .hero-text p {
+      font-size: 19px;
+      margin-bottom: 30px;
+      color: #dbeafe;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      padding: 13px 25px;
+      margin-right: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .primary-btn {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .secondary-btn {
+      border: 2px solid #38bdf8;
+      color: white;
+    }
+
+    .hero-card {
+      width: 38%;
+      background: white;
+      color: #1f2937;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+
+    .hero-card h2 {
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      background: #eff6ff;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 10px;
+    }
+
+    .stat strong {
+      color: #2563eb;
+      font-size: 22px;
+    }
+
+    /* COMMON */
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #64748b;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* PROBLEM */
+
+    .problem {
+      background: white;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .problem-card {
+      background: #f8fafc;
+      padding: 30px;
+      border-radius: 15px;
+      border-top: 4px solid #ef4444;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+
+    .problem-card h3 {
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    /* SOLUTION */
+
+    .solution {
+      background: #eff6ff;
+    }
+
+    .solution-box {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      background: white;
+      padding: 45px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .solution-box h3 {
+      color: #2563eb;
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    /* FEATURES */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .feature-card h3 {
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    /* HOW IT WORKS */
+
+    .how {
+      background: #0f172a;
+      color: white;
+    }
+
+    .how .section-title h2 {
+      color: white;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 25px;
+    }
+
+    .step-number {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #38bdf8;
+      color: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      font-weight: bold;
+      margin: 0 auto 15px;
+    }
+
+    /* BENEFITS */
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .benefit {
+      background: white;
+      padding: 25px;
+      border-left: 5px solid #22c55e;
+      border-radius: 10px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+    }
+
+    /* PRICING */
+
+    .pricing {
+      background: #eff6ff;
+    }
+
+    .pricing-card {
+      max-width: 420px;
+      margin: auto;
+      background: white;
+      text-align: center;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .pricing-card h3 {
+      font-size: 25px;
+      color: #1e3a8a;
+    }
+
+    .price {
+      font-size: 45px;
+      font-weight: bold;
+      color: #2563eb;
+      margin: 20px 0;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      text-align: left;
+      margin: 25px 0;
+    }
+
+    .pricing-card ul li {
+      margin: 12px 0;
+    }
+
+    .pricing-card a {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: white;
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: #0f172a;
+      color: white;
+    }
+
+    .contact .section-title h2 {
+      color: white;
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 10px 0;
+      color: #cbd5e1;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+      color: #94a3b8;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 900px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text,
+      .hero-card {
+        width: 100%;
+      }
+
+      .hero-card {
+        margin-top: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: 40px;
+      }
+
+      .problem-grid,
+      .features-grid,
+      .steps,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="logo">FinWise AI</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+
+      <h1>
+        Learn Money Smarter with
+        <span>FinWise AI</span>
+      </h1>
+
+      <p>
+        An AI-powered financial education platform designed for students
+        and young professionals to learn budgeting, saving, investing,
+        and money management through personalized and interactive learning.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#features" class="primary-btn">
+          Explore Features
+        </a>
+
+        <a href="#contact" class="secondary-btn">
+          Get Started
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+      <h2>Your Financial Learning Dashboard</h2>
+
+      <div class="stat">
+        <strong>75%</strong>
+        <p>Learning Progress</p>
+      </div>
+
+      <div class="stat">
+        <strong>₹5,000</strong>
+        <p>Monthly Saving Goal</p>
+      </div>
+
+      <div class="stat">
+        <strong>8/10</strong>
+        <p>Latest Quiz Score</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROBLEM -->
+
+  <section class="problem" id="problem">
+
+    <div class="section-title">
+
+      <h2>The Problem</h2>
+
+      <p>
+        Many young people enter adulthood without practical knowledge
+        about managing money.
+      </p>
+
+    </div>
+
+
+    <div class="problem-grid">
+
+      <div class="problem-card">
+
+        <h3>Limited Financial Education</h3>
+
+        <p>
+          Students often do not receive practical financial education
+          about budgeting, saving, investing, and managing expenses.
+        </p>
+
+      </div>
+
+
+      <div class="problem-card">
+
+        <h3>Complex Financial Topics</h3>
+
+        <p>
+          Traditional financial information can be difficult to understand
+          for beginners and young learners.
+        </p>
+
+      </div>
+
+
+      <div class="problem-card">
+
+        <h3>Poor Financial Decisions</h3>
+
+        <p>
+          Lack of financial knowledge can lead to poor budgeting,
+          low savings, unnecessary expenses, and financial stress.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SOLUTION -->
+
+  <section class="solution">
+
+    <div class="section-title">
+
+      <h2>Our Solution</h2>
+
+    </div>
+
+
+    <div class="solution-box">
+
+      <h3>AI-Powered Financial Education</h3>
+
+      <p>
+        FinWise AI provides personalized finance lessons, interactive
+        quizzes, budgeting guidance, saving tips, investment basics,
+        and an AI finance tutor. The platform adapts learning based
+        on each user's goals and knowledge level.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section id="features">
+
+    <div class="section-title">
+
+      <h2>Key Features</h2>
+
+      <p>
+        Everything you need to build better financial knowledge and habits.
+      </p>
+
+    </div>
+
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+
+        <div class="feature-icon">🤖</div>
+
+        <h3>AI Finance Tutor</h3>
+
+        <p>
+          Ask questions about budgeting, saving, investing, and personal
+          finance and receive simple explanations.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">📚</div>
+
+        <h3>Personalized Lessons</h3>
+
+        <p>
+          Learn financial concepts through content tailored to your goals
+          and current knowledge level.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">📝</div>
+
+        <h3>Interactive Quizzes</h3>
+
+        <p>
+          Test your knowledge and strengthen financial concepts through
+          simple quizzes and challenges.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">💰</div>
+
+        <h3>Budget Planner</h3>
+
+        <p>
+          Track income and expenses and learn how to build a practical
+          personal budget.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">🎯</div>
+
+        <h3>Financial Goals</h3>
+
+        <p>
+          Set savings goals and track your progress toward better
+          financial habits.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">📈</div>
+
+        <h3>Progress Tracking</h3>
+
+        <p>
+          Monitor lessons completed, quiz results, savings goals,
+          and financial learning progress.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section class="how" id="how">
+
+    <div class="section-title">
+
+      <h2>How It Works</h2>
+
+      <p>
+        Start your financial learning journey in four simple steps.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="step-number">1</div>
+
+        <h3>Create Profile</h3>
+
+        <p>
+          Register and create your learning profile.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">2</div>
+
+        <h3>Set Goals</h3>
+
+        <p>
+          Choose your financial goals and learning interests.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">3</div>
+
+        <h3>Learn with AI</h3>
+
+        <p>
+          Study personalized lessons and ask questions to the AI tutor.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">4</div>
+
+        <h3>Track Progress</h3>
+
+        <p>
+          Monitor your knowledge, quizzes, savings, and achievements.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BENEFITS -->
+
+  <section>
+
+    <div class="section-title">
+
+      <h2>Benefits</h2>
+
+    </div>
+
+
+    <div class="benefits-grid">
+
+      <div class="benefit">
+
+        <h3>✓ Understand Personal Finance</h3>
+
+        <p>
+          Learn important financial concepts in simple language.
+        </p>
+
+      </div>
+
+
+      <div class="benefit">
+
+        <h3>✓ Build Better Saving Habits</h3>
+
+        <p>
+          Learn how to save regularly and plan financial goals.
+        </p>
+
+      </div>
+
+
+      <div class="benefit">
+
+        <h3>✓ Improve Money Management</h3>
+
+        <p>
+          Understand how to manage expenses and create practical budgets.
+        </p>
+
+      </div>
+
+
+      <div class="benefit">
+
+        <h3>✓ Gain Financial Confidence</h3>
+
+        <p>
+          Become more confident while making financial decisions.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRICING -->
+
+  <section class="pricing" id="pricing">
+
+    <div class="section-title">
+
+      <h2>Simple Pricing</h2>
+
+      <p>
+        Affordable financial education for students and young professionals.
+      </p>
+
+    </div>
+
+
+    <div class="pricing-card">
+
+      <h3>FinWise Premium</h3>
+
+      <div class="price">
+        ₹1,000
+        <span style="font-size:16px;">/year</span>
+      </div>
+
+      <ul>
+
+        <li>✓ Personalized Finance Lessons</li>
+        <li>✓ AI Finance Tutor</li>
+        <li>✓ Interactive Quizzes</li>
+        <li>✓ Budget Planner</li>
+        <li>✓ Savings Guidance</li>
+        <li>✓ Progress Tracking</li>
+
+      </ul>
+
+      <a href="#contact">
+        Get Started
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about">
+
+    <div class="section-title">
+
+      <h2>About FinWise AI</h2>
+
+    </div>
+
+
+    <div class="about-content">
+
+      <p>
+        FinWise AI is a financial education platform created to make
+        financial learning simple, practical, and personalized for
+        students and young professionals.
+        Our goal is to help young people understand money early,
+        develop responsible financial habits, and confidently make
+        informed financial decisions.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="section-title">
+
+      <h2>Start Your Financial Journey</h2>
+
+      <p>
+        Learn today. Save smarter. Build a better financial future.
+      </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+      <p>
+        <strong>Project:</strong> FinWise AI
+      </p>
+
+      <p>
+        <strong>Service:</strong>
+        AI-Powered Financial Education Platform
+      </p>
+
+      <p>
+        <strong>Target Users:</strong>
+        Students and Young Professionals
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        finwiseai@example.com
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 FinWise AI | Personalized Financial Education Platform
+    </p>
+
+  </footer>
+
+</body>
+</html>
